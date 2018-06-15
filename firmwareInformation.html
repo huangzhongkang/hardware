@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>底层硬件检查系统</title>
+  <link rel="shortcut icon" href="./public/img/favicon.ico">
+  <link rel="stylesheet" href="./public/css/reset.css">
+  <link rel="stylesheet" href="./public/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./public/bootstrap-3.3.7-dist/css/bootstrap-responsive.min.css">
+  <link rel="stylesheet" href="./public/layui/css/layui.css">
+  <link rel="stylesheet" href="./public/font-awesome/css/font-awesome.css">
+  <link rel="stylesheet" href="./public/css/matrix-style.css" />
+  <link rel="stylesheet" href="./public/css/style.css">
+
+  <script src="./public/js/jq/jquery-3.3.1.min.js"></script>
+  <script src="./public/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+  <script src="./public/layui/layui.all.js"></script>
+</head>
+<body>
+<div class="common-wrapper clearfix">
+  <!--Header-part-->
+  <div id="header" class="">
+    <div class="head-msg clearfix flex">
+      <div class="logo">
+        <img class="logo-img" src="./public/img/index-logo.png" alt="">
+        <div class="logo-title">底层硬件检查系统</div>
+      </div>
+    </div>
+  </div>
+
+  <!--top-Header-menu-->
+  <div class="user-box">
+    <span>Admin</span>
+    <a title="退出"><i onclick="Open.url('login.html')" class="fa fa-power-off"></i></a>
+  </div>
+
+  <div class="expand-bar" title="侧边栏伸缩">
+    <i class="fa fa-sliders"></i>
+  </div>
+
+  <!--sidebar-menu-->
+  <div id="sidebar" class="clearfix"><a href="#" class="visible-phone"><i class="fa fa-home"></i> 控制台</a>
+    <div class="common--position-title proList-nav-title hidden-phone" style="font-size: 14px;"><span>导航</span></div>
+    <ul class="clearfix">
+      <li class="slideBar-ulWrap-liFirst" onclick="Open.url('./index.html')"><a><i class="fa fa-home"></i> <span>首页</span></a> </li>
+      <li class="submenu slideBar-border">
+        <a class="hardwareOne active"><i class="fa fa-desktop"></i> <span>固件</span> </a>
+        <i class="fa fa-caret-left expand hardwareTwo"></i>
+        <ul class="open open-hardware">
+          <li class="submenuTwo active">
+            <i class="fa fa-caret-left expand hardwareTwo"></i>
+            <a class="hardwareTwo project-manage-left"><span>项目管理</span> </a>
+            <ul class="submenuTwo-ul open" style="display: block;">
+              <li onclick="Open.url('./projectCreate.html')"><a class="hardwareTwo" style=""><i class="fa fa-plus"></i> &nbsp;新建项目</a></li>
+              <li onclick="Open.url('./projectList.html')"><a class="hardwareTwo active-lv3"><i class="fa fa-list"></i> &nbsp;项目列表</a></li>
+            </ul>
+          </li>
+        </ul>
+        <ul style="display: block;">
+          <li class="submenuTwo">
+            <i class="fa fa-caret-left expand hardwareTwo"></i>
+            <a class="hardwareTwo slideBar-systemConfig project-manage-left"><span>系统配置</span> </a>
+            <ul class="submenuTwo-ul">
+              <li onclick="Open.url('./userManage.html')"><a class="hardwareTwo"><i class="fa fa-user"></i> &nbsp;用户管理</a></li>
+              <li onclick="Open.url('./collectPeopleManage.html')"><a><i class="fa fa-plus"></i> &nbsp;采集人管理</a></li>
+              <li onclick="Open.url('./analysisPeopleManage.html')"><a><i class="fa fa-list"></i> &nbsp;分析人管理</a></li>
+              <li onclick="Open.url('./dataReturnedManage.html')"><a><i class="fa fa-list"></i> &nbsp;数据回传设置</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <!--main-container-part-->
+  <div id="content" class="clearfix">
+    <div class="content-bg common-content-bg common-content firmware-table-wrap">
+      <div class="common-box firmware-table-msg">
+        <div class="common--position-title proList-nav-title"><span>主机信息</span></div>
+        <div class="expand-table proList-table">
+          <div class="common-table-head">
+            <div class="pro-list common-table">
+              <div class="left">
+                主机名
+              </div>
+              <div class="left">
+                操作系统
+              </div>
+              <div class="left">
+                确定的威胁
+              </div>
+              <div class="left">
+                可疑
+              </div>
+              <div class="left">
+                信息
+              </div>
+              <div class="left">
+                采集时间
+              </div>
+              <div class="left">
+                耗时
+              </div>
+              <div class="left">
+                IP地址
+              </div>
+            </div>
+          </div>
+          <div class="common-table-body pro-progress-tableBody">
+            <div class="pro-list common-table">
+              <div class="left">
+                DESKTOP-1D34B4T
+              </div>
+              <div class="left">
+                Microsoft Windows 10 专业版
+              </div>
+              <div class="left">
+                0
+              </div>
+              <div class="left">
+                0
+              </div>
+              <div class="left">
+                0
+              </div>
+              <div class="left">
+                2018-05-29&nbsp;15:41:11
+              </div>
+              <div class="left">
+                12秒
+              </div>
+              <div class="left">
+                192.168.130.1
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="common-box">
+        <div class="common--position-title proList-nav-title"><span>物理磁盘信息</span></div>
+        <div class="disk-wrap clearfix">
+          <div class="disk-box">
+            <div class="title">
+              磁盘1
+            </div>
+            <div class="content">
+              <div class="common-table">
+                <div class="left">描述</div>
+                <div class="right">磁盘驱动器</div>
+              </div>
+              <div class="common-table">
+                <div class="left">制造商</div>
+                <div class="right">（标准磁盘驱动器）</div>
+              </div>
+              <div class="common-table">
+                <div class="left">介质类型</div>
+                <div class="right">Fixed hard disk media</div>
+              </div>
+              <div class="common-table">
+                <div class="left">硬盘型号</div>
+                <div class="right">WDC WD30EFRX-68EUZN0</div>
+              </div>
+              <div class="common-table">
+                <div class="left">名称</div>
+                <div class="right">\\.\PHYSICALDRIVE1</div>
+              </div>
+              <div class="common-table">
+                <div class="left">磁盘大小</div>
+                <div class="right">2GB</div>
+              </div>
+              <div class="common-table">
+                <div class="left">即插即用设备ID</div>
+                <div class="right">	SCSI\DISK&VEN_WDC&PROD_WD30EFRX-68EUZN0\4&2A148996&0&010000</div>
+              </div>
+            </div>
+          </div>
+          <div class="disk-box">
+            <div class="title">
+              磁盘0
+            </div>
+            <div class="content">
+              <div class="common-table">
+                <div class="left">描述</div>
+                <div class="right">磁盘驱动器</div>
+              </div>
+              <div class="common-table">
+                <div class="left">制造商</div>
+                <div class="right">（标准磁盘驱动器）</div>
+              </div>
+              <div class="common-table">
+                <div class="left">介质类型</div>
+                <div class="right">Fixed hard disk media</div>
+              </div>
+              <div class="common-table">
+                <div class="left">硬盘型号</div>
+                <div class="right">WDC WD30EFRX-68EUZN0</div>
+              </div>
+              <div class="common-table">
+                <div class="left">名称</div>
+                <div class="right">\\.\PHYSICALDRIVE1</div>
+              </div>
+              <div class="common-table">
+                <div class="left">磁盘大小</div>
+                <div class="right">2GB</div>
+              </div>
+              <div class="common-table">
+                <div class="left">即插即用设备ID</div>
+                <div class="right">	SCSI\DISK&VEN_WDC&PROD_WD30EFRX-68EUZN0\4&2A148996&0&010000</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="common-box">
+        <div class="common--position-title proList-nav-title"><span>逻辑磁盘分区信息</span></div>
+        <div class="disk-wrap clearfix" style="text-align: left;">
+          <div class="disk-box">
+            <div class="title">
+              本地固定磁盘（C:）
+            </div>
+            <div class="content">
+              <div class="common-table">
+                <div class="left">描述</div>
+                <div class="right">本地固定磁盘</div>
+              </div>
+              <div class="common-table">
+                <div class="left">文件系统</div>
+                <div class="right">NTFS</div>
+              </div>
+              <div class="common-table">
+                <div class="left">卷名</div>
+                <div class="right">本地固定磁盘</div>
+              </div>
+              <div class="common-table">
+                <div class="left">剩余空间</div>
+                <div class="right">2GB</div>
+              </div>
+              <div class="common-table">
+                <div class="left">磁盘大小</div>
+                <div class="right">2GB</div>
+              </div>
+              <div class="common-table">
+                <div class="left">卷序列号</div>
+                <div class="right">C2F29415</div>
+              </div>
+            </div>
+          </div>
+          <div class="disk-box">
+            <div class="title">
+              DISK2（D:）
+            </div>
+            <div class="content">
+              <div class="common-table">
+                <div class="left">描述</div>
+                <div class="right">本地固定磁盘</div>
+              </div>
+              <div class="common-table">
+                <div class="left">文件系统</div>
+                <div class="right">NTFS</div>
+              </div>
+              <div class="common-table">
+                <div class="left">卷名</div>
+                <div class="right"> DISK2（D:）</div>
+              </div>
+              <div class="common-table">
+                <div class="left">剩余空间</div>
+                <div class="right">2GB</div>
+              </div>
+              <div class="common-table">
+                <div class="left">磁盘大小</div>
+                <div class="right">2GB</div>
+              </div>
+              <div class="common-table">
+                <div class="left">卷序列号</div>
+                <div class="right">C2F29415</div>
+              </div>
+            </div>
+          </div>
+          <div class="disk-box">
+            <div class="title">
+              DISK1_3（E:）
+            </div>
+            <div class="content">
+              <div class="common-table">
+                <div class="left">描述</div>
+                <div class="right">本地固定磁盘</div>
+              </div>
+              <div class="common-table">
+                <div class="left">文件系统</div>
+                <div class="right">NTFS</div>
+              </div>
+              <div class="common-table">
+                <div class="left">卷名</div>
+                <div class="right">  DISK1_3（E:）</div>
+              </div>
+              <div class="common-table">
+                <div class="left">剩余空间</div>
+                <div class="right">2GB</div>
+              </div>
+              <div class="common-table">
+                <div class="left">磁盘大小</div>
+                <div class="right">2GB</div>
+              </div>
+              <div class="common-table">
+                <div class="left">卷序列号</div>
+                <div class="right">C2F29415</div>
+              </div>
+            </div>
+          </div>
+          <div class="disk-box">
+            <div class="title">
+              DISK1_2（F:）
+            </div>
+            <div class="content">
+              <div class="common-table">
+                <div class="left">描述</div>
+                <div class="right">本地固定磁盘</div>
+              </div>
+              <div class="common-table">
+                <div class="left">文件系统</div>
+                <div class="right">NTFS</div>
+              </div>
+              <div class="common-table">
+                <div class="left">卷名</div>
+                <div class="right"> DISK1_2（F:）</div>
+              </div>
+              <div class="common-table">
+                <div class="left">剩余空间</div>
+                <div class="right">2GB</div>
+              </div>
+              <div class="common-table">
+                <div class="left">磁盘大小</div>
+                <div class="right">2GB</div>
+              </div>
+              <div class="common-table">
+                <div class="left">卷序列号</div>
+                <div class="right">C2F29415</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="common-box">
+        <div class="common--position-title proList-nav-title"><span>BIOS信息</span></div>
+        <div class="disk-wrap clearfix" style="text-align: left;">
+          <div class="disk-box">
+            <div class="title">
+              BIOS
+            </div>
+            <div class="content">
+              <div class="common-table">
+                <div class="left">Bios版本</div>
+                <div class="right">ALASKA - 1072009 BIOS Date: 09/18/15 15:22:43 Ver: 04.06.05 BIOS Date: 09/18/15 15:22:43 Ver: 04.06.</div>
+              </div>
+              <div class="common-table">
+                <div class="left">制造商</div>
+                <div class="right">American Megatrends Inc.</div>
+              </div>
+              <div class="common-table">
+                <div class="left">日期</div>
+                <div class="right">	20150918000000.000000+000</div>
+              </div>
+              <div class="common-table">
+                <div class="left">序列号</div>
+                <div class="right">To be filled by O.E.M.</div>
+              </div>
+              <div class="common-table">
+                <div class="left">系统管理BIOS版本</div>
+                <div class="right">F7</div>
+              </div>
+              <div class="common-table">
+                <div class="left">软件元素ID</div>
+                <div class="right">	BIOS Date: 09/18/15 15:22:43 Ver: 04.06.05</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="common-box">
+      <div class="common--position-title proList-nav-title"><span>MBR</span></div>
+      <div class="expand-table">
+        <div class="common-table-head">
+          <div class="pro-list common-table">
+            <div class="left">
+              名称
+            </div>
+            <div class="left">
+              数据大小（字节）
+            </div>
+            <div class="left">
+              版本
+            </div>
+            <div class="left">
+              SHA256
+            </div>
+            <div class="left">
+              是否在白名单
+            </div>
+            <div class="left">
+              是否可疑
+            </div>
+            <div class="left">
+              分析结果
+            </div>
+            <div class="left">
+              详情
+            </div>
+          </div>
+        </div>
+        <div class="common-table-body">
+          <div class="pro-list common-table">
+            <div class="left">
+              \\.\PHYSICALDRIVE1
+            </div>
+            <div class="left">
+              512
+            </div>
+            <div class="left">
+              NT6.1+ MBR
+            </div>
+            <div class="left">
+              088995559ab317af9b3291408da689651e8353f62e0a478d92eb0b5a947063fd
+            </div>
+            <div class="left">
+              是
+            </div>
+            <div class="left">
+              否
+            </div>
+            <div class="left">
+              没有威胁
+            </div>
+            <div class="left">
+              <i class="ace-icon fa fa-angle-double-down click-expand-line"></i>
+            </div>
+          </div>
+          <div class="init-hidden">
+            <div class="expand-line flex clearfix">
+              <div class="expand-line-left MBR-left-first">
+                <div class="title">MBR引导程序反汇编</div>
+                <div class="common-table-head">
+                  <div class="pro-list common-table">
+                    <div class="left">
+                      地址
+                    </div>
+                    <div class="left">
+                      16进制编码
+                    </div>
+                    <div class="left">
+                      反汇编
+                    </div>
+                  </div>
+                </div>
+                <div class="common-table-body">
+                  <div class="pro-list common-table">
+                    <div class="left">
+                      0x0000
+                    </div>
+                    <div class="left">
+                      807e0080
+                    </div>
+                    <div class="left">
+                      cmp byte [bp], 0x80
+                    </div>
+                  </div>
+                  <div class="pro-list common-table">
+                    <div class="left">
+                      0x0000
+                    </div>
+                    <div class="left">
+                      807e0080
+                    </div>
+                    <div class="left">
+                      cmp byte [bp], 0x80
+                    </div>
+                  </div>
+                  <div class="pro-list common-table">
+                    <div class="left">
+                      0x0000
+                    </div>
+                    <div class="left">
+                      807e0080
+                    </div>
+                    <div class="left">
+                      cmp byte [bp], 0x80
+                    </div>
+                  </div>
+                  <div class="pro-list common-table">
+                    <div class="left">
+                      0x0000
+                    </div>
+                    <div class="left">
+                      807e0080
+                    </div>
+                    <div class="left">
+                      cmp byte [bp], 0x80
+                    </div>
+                  </div>
+                  <div class="pro-list common-table">
+                    <div class="left">
+                      0x0000
+                    </div>
+                    <div class="left">
+                      807e0080
+                    </div>
+                    <div class="left">
+                      cmp byte [bp], 0x80
+                    </div>
+                  </div>
+                  <div class="pro-list common-table">
+                    <div class="left">
+                      0x0000
+                    </div>
+                    <div class="left">
+                      807e0080
+                    </div>
+                    <div class="left">
+                      cmp byte [bp], 0x80
+                    </div>
+                  </div>
+                  <div class="pro-list common-table">
+                    <div class="left">
+                      0x0000
+                    </div>
+                    <div class="left">
+                      807e0080
+                    </div>
+                    <div class="left">
+                      cmp byte [bp], 0x80
+                    </div>
+                  </div>
+                  <div class="pro-list common-table">
+                    <div class="left">
+                      0x0000
+                    </div>
+                    <div class="left">
+                      807e0080
+                    </div>
+                    <div class="left">
+                      cmp byte [bp], 0x80
+                    </div>
+                  </div>
+                  <div class="pro-list common-table">
+                    <div class="left">
+                      0x0000
+                    </div>
+                    <div class="left">
+                      807e0080
+                    </div>
+                    <div class="left">
+                      cmp byte [bp], 0x80
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="expand-line-left expand-line-right">
+                <div class="title">主分区一</div>
+                <!-- <div class="common-table-head">
+                   <div class="pro-list common-table">
+                     <div class="left">
+                       地址
+                     </div>
+                     <div class="left">
+                       16进制编码
+                     </div>
+                     <div class="left">
+                       反汇编
+                     </div>
+                   </div>
+                 </div>-->
+                <div class="common-table-body">
+                  <div class="pro-list common-table">
+                    <div class="left">
+                      分区文件类型标识
+                    </div>
+                    <div class="left">
+                      238
+                    </div>
+                  </div>
+                  <div class="pro-list common-table">
+                    <div class="left">
+                      激活分区标志位
+                    </div>
+                    <div class="left">
+                      0
+                    </div>
+                  </div>
+                  <div class="pro-list common-table">
+                    <div class="left">分区总的扇区数</div>
+                    <div class="left">-1</div>
+                  </div>
+                  <div class="pro-list common-table">
+                    <div class="left">分区起始相对扇区号</div>
+                    <div class="left">1</div>
+                  </div>
+                  <div class="pro-list common-table">
+                    <div class="left">分区起始磁头号</div>
+                    <div class="left">0</div>
+                  </div>
+                  <div class="pro-list common-table">
+                    <div class="left">分区结束磁头号</div>
+                    <div class="left">0</div>
+                  </div>
+                  <div class="pro-list common-table">
+                    <div class="left">分区起始扇区号</div>
+                    <div class="left">2</div>
+                  </div>
+                  <div class="pro-list common-table">
+                    <div class="left">分区结束扇区号</div>
+                    <div class="left">63</div>
+                  </div>
+                  <div class="pro-list common-table">
+                    <div class="left">分区起始磁柱号</div>
+                    <div class="left">0</div>
+                  </div>
+                  <div class="pro-list common-table">
+                    <div class="left">分区结束磁柱号</div>
+                    <div class="left">1023</div>
+                  </div>
+                </div>
+              </div>
+              <div class="expand-line-left expand-line-right">
+                <div class="title">主分区二</div>
+                <!-- <div class="common-table-head">
+                   <div class="pro-list common-table">
+                     <div class="left">
+                       地址
+                     </div>
+                     <div class="left">
+                       16进制编码
+                     </div>
+                     <div class="left">
+                       反汇编
+                     </div>
+                   </div>
+                 </div>-->
+                <div class="common-table-body">
+                  <div class="pro-list common-table">
+                    <div class="left">
+                      分区文件类型标识
+                    </div>
+                    <div class="left">
+                      238
+                    </div>
+                  </div>
+                  <div class="pro-list common-table">
+                    <div class="left">
+                      激活分区标志位
+                    </div>
+                    <div class="left">
+                      0
+                    </div>
+                  </div>
+                  <div class="pro-list common-table">
+                    <div class="left">分区总的扇区数</div>
+                    <div class="left">-1</div>
+                  </div>
+                  <div class="pro-list common-table">
+                    <div class="left">分区起始相对扇区号</div>
+                    <div class="left">1</div>
+                  </div>
+                  <div class="pro-list common-table">
+                    <div class="left">分区起始磁头号</div>
+                    <div class="left">0</div>
+                  </div>
+                  <div class="pro-list common-table">
+                    <div class="left">分区结束磁头号</div>
+                    <div class="left">0</div>
+                  </div>
+                  <div class="pro-list common-table">
+                    <div class="left">分区起始扇区号</div>
+                    <div class="left">2</div>
+                  </div>
+                  <div class="pro-list common-table">
+                    <div class="left">分区结束扇区号</div>
+                    <div class="left">63</div>
+                  </div>
+                  <div class="pro-list common-table">
+                    <div class="left">分区起始磁柱号</div>
+                    <div class="left">0</div>
+                  </div>
+                  <div class="pro-list common-table">
+                    <div class="left">分区结束磁柱号</div>
+                    <div class="left">1023</div>
+                  </div>
+                </div>
+              </div>
+              <div class="expand-line-left expand-line-right">
+                <div class="title">主分区三</div>
+                <!-- <div class="common-table-head">
+                   <div class="pro-list common-table">
+                     <div class="left">
+                       地址
+                     </div>
+                     <div class="left">
+                       16进制编码
+                     </div>
+                     <div class="left">
+                       反汇编
+                     </div>
+                   </div>
+                 </div>-->
+                <div class="common-table-body">
+                  <div class="pro-list common-table">
+                    <div class="left">
+                      分区文件类型标识
+                    </div>
+                    <div class="left">
+                      238
+                    </div>
+                  </div>
+                  <div class="pro-list common-table">
+                    <div class="left">
+                      激活分区标志位
+                    </div>
+                    <div class="left">
+                      0
+                    </div>
+                  </div>
+                  <div class="pro-list common-table">
+                    <div class="left">分区总的扇区数</div>
+                    <div class="left">-1</div>
+                  </div>
+                  <div class="pro-list common-table">
+                    <div class="left">分区起始相对扇区号</div>
+                    <div class="left">1</div>
+                  </div>
+                  <div class="pro-list common-table">
+                    <div class="left">分区起始磁头号</div>
+                    <div class="left">0</div>
+                  </div>
+                  <div class="pro-list common-table">
+                    <div class="left">分区结束磁头号</div>
+                    <div class="left">0</div>
+                  </div>
+                  <div class="pro-list common-table">
+                    <div class="left">分区起始扇区号</div>
+                    <div class="left">2</div>
+                  </div>
+                  <div class="pro-list common-table">
+                    <div class="left">分区结束扇区号</div>
+                    <div class="left">63</div>
+                  </div>
+                  <div class="pro-list common-table">
+                    <div class="left">分区起始磁柱号</div>
+                    <div class="left">0</div>
+                  </div>
+                  <div class="pro-list common-table">
+                    <div class="left">分区结束磁柱号</div>
+                    <div class="left">1023</div>
+                  </div>
+                </div>
+              </div>
+              <div class="expand-line-left expand-line-right">
+                <div class="title">主分区四</div>
+                <!-- <div class="common-table-head">
+                   <div class="pro-list common-table">
+                     <div class="left">
+                       地址
+                     </div>
+                     <div class="left">
+                       16进制编码
+                     </div>
+                     <div class="left">
+                       反汇编
+                     </div>
+                   </div>
+                 </div>-->
+                <div class="common-table-body">
+                  <div class="pro-list common-table">
+                    <div class="left">
+                      分区文件类型标识
+                    </div>
+                    <div class="left">
+                      238
+                    </div>
+                  </div>
+                  <div class="pro-list common-table">
+                    <div class="left">
+                      激活分区标志位
+                    </div>
+                    <div class="left">
+                      0
+                    </div>
+                  </div>
+                  <div class="pro-list common-table">
+                    <div class="left">分区总的扇区数</div>
+                    <div class="left">-1</div>
+                  </div>
+                  <div class="pro-list common-table">
+                    <div class="left">分区起始相对扇区号</div>
+                    <div class="left">1</div>
+                  </div>
+                  <div class="pro-list common-table">
+                    <div class="left">分区起始磁头号</div>
+                    <div class="left">0</div>
+                  </div>
+                  <div class="pro-list common-table">
+                    <div class="left">分区结束磁头号</div>
+                    <div class="left">0</div>
+                  </div>
+                  <div class="pro-list common-table">
+                    <div class="left">分区起始扇区号</div>
+                    <div class="left">2</div>
+                  </div>
+                  <div class="pro-list common-table">
+                    <div class="left">分区结束扇区号</div>
+                    <div class="left">63</div>
+                  </div>
+                  <div class="pro-list common-table">
+                    <div class="left">分区起始磁柱号</div>
+                    <div class="left">0</div>
+                  </div>
+                  <div class="pro-list common-table">
+                    <div class="left">分区结束磁柱号</div>
+                    <div class="left">1023</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      <div class="common-box">
+        <div class="common--position-title proList-nav-title"><span>VBR</span></div>
+        <div class="expand-table">
+          <div class="common-table-head">
+            <div class="pro-list common-table">
+              <div class="left">
+                名称
+              </div>
+              <div class="left">
+                数据大小（字节）
+              </div>
+              <div class="left">
+                版本
+              </div>
+              <div class="left">
+                SHA256
+              </div>
+              <div class="left">
+                是否在白名单
+              </div>
+              <div class="left">
+                是否可疑
+              </div>
+              <div class="left">
+                分析结果
+              </div>
+              <div class="left">
+                详情
+              </div>
+            </div>
+          </div>
+          <div class="common-table-body">
+            <div class="pro-list common-table">
+              <div class="left">
+                \\.\PHYSICALDRIVE1
+              </div>
+              <div class="left">
+                512
+              </div>
+              <div class="left">
+                NT6.1+ MBR
+              </div>
+              <div class="left">
+                088995559ab317af9b3291408da689651e8353f62e0a478d92eb0b5a947063fd
+              </div>
+              <div class="left">
+                是
+              </div>
+              <div class="left">
+                否
+              </div>
+              <div class="left">
+                没有威胁
+              </div>
+              <div class="left">
+                <i class="ace-icon fa fa-angle-double-down click-expand-line"></i>
+              </div>
+            </div>
+            <div class="init-hidden">
+              <div class="expand-line flex clearfix">
+                <div class="expand-line-left  MBR-left-first" style="width: 94%;">
+                  <div class="title">VBR引导程序反汇编</div>
+                  <div class="common-table-head">
+                    <div class="pro-list common-table">
+                      <div class="left">
+                        地址
+                      </div>
+                      <div class="left">
+                        16进制编码
+                      </div>
+                      <div class="left">
+                        反汇编
+                      </div>
+                    </div>
+                  </div>
+                  <div class="common-table-body">
+                    <div class="pro-list common-table">
+                      <div class="left">
+                        0x0000
+                      </div>
+                      <div class="left">
+                        807e0080
+                      </div>
+                      <div class="left">
+                        cmp byte [bp], 0x80
+                      </div>
+                    </div>
+                    <div class="pro-list common-table">
+                      <div class="left">
+                        0x0000
+                      </div>
+                      <div class="left">
+                        807e0080
+                      </div>
+                      <div class="left">
+                        cmp byte [bp], 0x80
+                      </div>
+                    </div>
+                    <div class="pro-list common-table">
+                      <div class="left">
+                        0x0000
+                      </div>
+                      <div class="left">
+                        807e0080
+                      </div>
+                      <div class="left">
+                        cmp byte [bp], 0x80
+                      </div>
+                    </div>
+                    <div class="pro-list common-table">
+                      <div class="left">
+                        0x0000
+                      </div>
+                      <div class="left">
+                        807e0080
+                      </div>
+                      <div class="left">
+                        cmp byte [bp], 0x80
+                      </div>
+                    </div>
+                    <div class="pro-list common-table">
+                      <div class="left">
+                        0x0000
+                      </div>
+                      <div class="left">
+                        807e0080
+                      </div>
+                      <div class="left">
+                        cmp byte [bp], 0x80
+                      </div>
+                    </div>
+                    <div class="pro-list common-table">
+                      <div class="left">
+                        0x0000
+                      </div>
+                      <div class="left">
+                        807e0080
+                      </div>
+                      <div class="left">
+                        cmp byte [bp], 0x80
+                      </div>
+                    </div>
+                    <div class="pro-list common-table">
+                      <div class="left">
+                        0x0000
+                      </div>
+                      <div class="left">
+                        807e0080
+                      </div>
+                      <div class="left">
+                        cmp byte [bp], 0x80
+                      </div>
+                    </div>
+                    <div class="pro-list common-table">
+                      <div class="left">
+                        0x0000
+                      </div>
+                      <div class="left">
+                        807e0080
+                      </div>
+                      <div class="left">
+                        cmp byte [bp], 0x80
+                      </div>
+                    </div>
+                    <div class="pro-list common-table">
+                      <div class="left">
+                        0x0000
+                      </div>
+                      <div class="left">
+                        807e0080
+                      </div>
+                      <div class="left">
+                        cmp byte [bp], 0x80
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="common-box">
+        <div class="common--position-title proList-nav-title"><span>UEFI</span></div>
+        <div class="expand-table">
+          <div class="common-table-head">
+            <div class="pro-list common-table">
+              <div style="width: 10%;" class="left">
+                名称
+              </div>
+              <div style="width: 40%;" class="left">
+                数据大小（字节）
+              </div>
+              <div style="width: 40%;" class="left">
+                分析结果
+              </div>
+              <div style="width: 10%;" class="left">
+                详情
+              </div>
+            </div>
+          </div>
+          <div class="common-table-body">
+            <div class="pro-list common-table">
+              <div style="width: 10%;" class="left">
+                \\.\PHYSICALDRIVE1
+              </div>
+              <div style="width: 40%;" class="left">
+                512
+              </div>
+              <div style="width: 40%;" class="left">
+                没有威胁
+              </div>
+              <div style="width: 10%;" class="left">
+                <i class="ace-icon fa fa-angle-double-down click-expand-line"></i>
+              </div>
+            </div>
+            <div class="init-hidden">
+              <div class="expand-line flex clearfix">
+                <div class="expand-line-left MBR-left-first" style="width: 94%;">
+                  <div class="common-table-head">
+                    <div class="pro-list common-table">
+                      <div class="left">
+                        类型
+                      </div>
+                      <div class="left">
+                        子类型
+                      </div>
+                      <div class="left">
+                        大小（字节）
+                      </div>
+                      <div class="left">
+                        熵
+                      </div>
+                      <div class="left">
+                        Flags
+                      </div>
+                      <div class="left">
+                        名称
+                      </div>
+                    </div>
+                  </div>
+                  <div class="common-table-body">
+                    <div class="pro-list common-table">
+                      <div class="left">
+                        Section
+                      </div>
+                      <div class="left">
+                        S_PE32
+                      </div>
+                      <div class="left">
+                        14652
+                      </div>
+                      <div class="left">
+                        536
+                      </div>
+                      <div class="left">
+                        在白名单中
+                      </div>
+                      <div class="left">
+
+                      </div>
+                    </div>
+                    <div class="pro-list common-table">
+                      <div class="left">
+                        Section
+                      </div>
+                      <div class="left">
+                        S_PE32
+                      </div>
+                      <div class="left">
+                        14652
+                      </div>
+                      <div class="left">
+                        536
+                      </div>
+                      <div class="left">
+                        在白名单中
+                      </div>
+                      <div class="left">
+
+                      </div>
+                    </div>
+                    <div class="pro-list common-table">
+                      <div class="left">
+                        Section
+                      </div>
+                      <div class="left">
+                        S_PE32
+                      </div>
+                      <div class="left">
+                        14652
+                      </div>
+                      <div class="left">
+                        536
+                      </div>
+                      <div class="left">
+                        在白名单中
+                      </div>
+                      <div class="left">
+
+                      </div>
+                    </div>
+                    <div class="pro-list common-table">
+                      <div class="left">
+                        Section
+                      </div>
+                      <div class="left">
+                        S_PE32
+                      </div>
+                      <div class="left">
+                        14652
+                      </div>
+                      <div class="left">
+                        536
+                      </div>
+                      <div class="left">
+                        在白名单中
+                      </div>
+                      <div class="left">
+
+                      </div>
+                    </div>
+                    <div class="pro-list common-table">
+                      <div class="left">
+                        Section
+                      </div>
+                      <div class="left">
+                        S_PE32
+                      </div>
+                      <div class="left">
+                        14652
+                      </div>
+                      <div class="left">
+                        536
+                      </div>
+                      <div class="left">
+                        在白名单中
+                      </div>
+                      <div class="left">
+
+                      </div>
+                    </div>
+                    <div class="pro-list common-table">
+                      <div class="left">
+                        Section
+                      </div>
+                      <div class="left">
+                        S_PE32
+                      </div>
+                      <div class="left">
+                        14652
+                      </div>
+                      <div class="left">
+                        536
+                      </div>
+                      <div class="left">
+                        在白名单中
+                      </div>
+                      <div class="left">
+
+                      </div>
+                    </div>
+                    <div class="pro-list common-table">
+                      <div class="left">
+                        Section
+                      </div>
+                      <div class="left">
+                        S_PE32
+                      </div>
+                      <div class="left">
+                        14652
+                      </div>
+                      <div class="left">
+                        536
+                      </div>
+                      <div class="left">
+                        在白名单中
+                      </div>
+                      <div class="left">
+
+                      </div>
+                    </div>
+                    <div class="pro-list common-table">
+                      <div class="left">
+                        Section
+                      </div>
+                      <div class="left">
+                        S_PE32
+                      </div>
+                      <div class="left">
+                        14652
+                      </div>
+                      <div class="left">
+                        536
+                      </div>
+                      <div class="left">
+                        在白名单中
+                      </div>
+                      <div class="left">
+
+                      </div>
+                    </div>
+                    <div class="pro-list common-table">
+                      <div class="left">
+                        Section
+                      </div>
+                      <div class="left">
+                        S_PE32
+                      </div>
+                      <div class="left">
+                        14652
+                      </div>
+                      <div class="left">
+                        536
+                      </div>
+                      <div class="left">
+                        在白名单中
+                      </div>
+                      <div class="left">
+
+                      </div>
+                    </div>
+                    <div class="pro-list common-table">
+                      <div class="left">
+                        Section
+                      </div>
+                      <div class="left">
+                        S_PE32
+                      </div>
+                      <div class="left">
+                        14652
+                      </div>
+                      <div class="left">
+                        536
+                      </div>
+                      <div class="left">
+                        在白名单中
+                      </div>
+                      <div class="left">
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Footer-part-->
+
+  <div class="row-fluid clearfix">
+    <div id="footer" class="span12" style="color: #fff;">
+      中睿天下&nbsp;&nbsp;2018&nbsp;&nbsp;©&nbsp;&nbsp;北京中睿天下信息技术有限公司
+    </div>
+  </div>
+</div>
+<script src="./public/js/style.js"></script>
+<script src="./public/layui/layui.all.js"></script>
+<script>
+  window.onload = function () {
+    if (!$('.slideBar-systemConfig').siblings('ul').hasClass('open')) {
+      $('.slideBar-systemConfig').siblings('.fa-caret-left').removeClass('slide-icon-animation');
+    }
+  };
+  var table = layui.table;
+  //转换静态表格
+  table.init('proList', {
+    limit: 10
+  });
+</script>
+</body>
+</html>

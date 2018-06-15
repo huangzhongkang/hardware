@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>底层硬件检查系统</title>
+  <link rel="shortcut icon" href="./public/img/favicon.ico">
+  <link rel="stylesheet" href="./public/css/reset.css">
+  <link rel="stylesheet" href="./public/layui/css/layui.css">
+  <link rel="stylesheet" href="./public/font-awesome/css/font-awesome.css">
+  <link rel="stylesheet" href="./public/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./public/bootstrap-3.3.7-dist/css/bootstrap-responsive.min.css">
+  <link rel="stylesheet" href="./public/css/matrix-style.css" />
+  <link rel="stylesheet" href="./public/css/style.css">
+
+  <script src="./public/js/jq/jquery-3.3.1.min.js"></script>
+  <script src="./public/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+  <script src="./public/layui/layui.all.js"></script>
+</head>
+<body id="dataReturn">
+<div class="common-wrapper clearfix">
+  <!--Header-part-->
+  <div id="header" class="">
+    <div class="head-msg clearfix flex">
+      <div class="logo">
+        <img class="logo-img" src="./public/img/index-logo.png" alt="">
+        <div class="logo-title">底层硬件检查系统</div>
+      </div>
+    </div>
+  </div>
+
+  <!--top-Header-menu-->
+  <div class="user-box">
+    <span>Admin</span>
+    <a title="退出"><i onclick="Open.url('login.html')" class="fa fa-power-off"></i></a>
+  </div>
+
+  <div class="expand-bar" title="侧边栏伸缩">
+    <i class="fa fa-sliders"></i>
+  </div>
+
+  <!--sidebar-menu-->
+  <div id="sidebar" class="clearfix"><a href="#" class="visible-phone"><i class="fa fa-home"></i> 控制台</a>
+    <div class="common--position-title proList-nav-title hidden-phone" style="font-size: 14px;"><span>导航</span></div>
+    <ul class="clearfix">
+      <li class="slideBar-ulWrap-liFirst" onclick="Open.url('./index.html')"><a><i class="fa fa-home"></i> <span>首页</span></a> </li>
+      <li class="submenu slideBar-border">
+        <a class="hardwareOne active"><i class="fa fa-desktop"></i> <span>固件</span> </a>
+        <i class="fa fa-caret-left expand hardwareTwo"></i>
+        <ul class="open-hardware">
+          <li class="submenuTwo" style="display: block;">
+            <i class="fa fa-caret-left expand hardwareTwo"></i>
+            <a class="hardwareTwo project-manage-left slideBar-projectManage"><span>项目管理</span> </a>
+            <ul class="submenuTwo-ul">
+              <li onclick="Open.url('./projectCreate.html')"><a class="hardwareTwo" style=""><i class="fa fa-plus"></i> &nbsp;新建项目</a></li>
+              <li onclick="Open.url('./projectList.html')"><a class="hardwareTwo"><i class="fa fa-list"></i> &nbsp;项目列表</a></li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="open open-hardware" style="display: block;">
+          <li class="submenuTwo active">
+            <i class="fa fa-caret-left expand hardwareTwo"></i>
+            <a class="hardwareTwo slideBar-systemConfig project-manage-left"><span>系统配置</span> </a>
+            <ul class="submenuTwo-ul open" style="display: block;">
+              <li onclick="Open.url('./userManage.html')"><a class="hardwareTwo"><i class="fa fa-user"></i> &nbsp;用户管理</a></li>
+              <li onclick="Open.url('./collectPeopleManage.html')"><a class=""><i class="fa fa-plus"></i> &nbsp;采集人管理</a></li>
+              <li onclick="Open.url('./analysisPeopleManage.html')"><a><i class="fa fa-list"></i> &nbsp;分析人管理</a></li>
+              <li onclick="Open.url('./dataReturnedManage.html')"><a class="active-lv3"><i class="fa fa-list"></i> &nbsp;数据回传设置</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <!--main-container-part-->
+  <div id="content" class="clearfix">
+    <div class="content-bg common-content-bg">
+      <div class="common-box">
+        <div class="common--position-title proList-nav-title"><span>数据回传设置</span></div>
+        <div class="border-wrap" style="margin-top: 15px;margin-bottom: 30px;">
+          <div class="add-pro-box">
+            <div class="add-pro-left">
+              数据回传设置：
+            </div>
+            <div class="add-pro-right">
+              <input style="display: inline-block;" type="text" name="title" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input" value="d:\DataDirectory\">
+              <div style="display: inline-block;margin-left: 10px; color: #e06767;">
+                格式: C:\DataDirectory\
+              </div>
+            </div>
+          </div>
+
+          <div class="add-pro-box">
+            <div class="add-pro-left">
+              操作：
+            </div>
+            <div class="add-pro-right">
+              <button style="padding: 0 70px;" class="layui-btn layui-btn layui-btn-sm"><i class="fa fa-plus-circle"></i>&nbsp;保存</button>
+              <span style="color: #ad9c9c;line-height: 56px;font-size: 13px;padding-left: 10px;">（设置完成后需要重新启动后台监听进程CLI）</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Footer-part-->
+  <div class="row-fluid clearfix">
+    <div id="footer" class="span12" style="color: #fff;">
+      中睿天下&nbsp;&nbsp;2018&nbsp;&nbsp;©&nbsp;&nbsp;北京中睿天下信息技术有限公司
+    </div>
+  </div>
+</div>
+
+<script src="./public/js/style.js"></script>
+<script>
+  window.onload = function () {
+    if (!$('.slideBar-projectManage').siblings('ul').hasClass('open')) {
+      $('.slideBar-projectManage').siblings('.fa-caret-left').removeClass('slide-icon-animation');
+    }
+  }
+</script>
+</body>
+</html>

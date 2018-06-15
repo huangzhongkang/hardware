@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>底层硬件检查系统</title>
+  <link rel="shortcut icon" href="./public/img/favicon.ico">
+  <link rel="stylesheet" href="./public/css/reset.css">
+  <link rel="stylesheet" href="./public/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./public/bootstrap-3.3.7-dist/css/bootstrap-responsive.min.css">
+  <link rel="stylesheet" href="./public/font-awesome/css/font-awesome.css">
+  <link rel="stylesheet" href="./public/css/matrix-style.css" />
+  <link rel="stylesheet" href="./public/css/style.css">
+
+  <script src="./public/js/jq/jquery-3.3.1.min.js"></script>
+  <script src="./public/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+  <script src="./public/layui/layui.all.js"></script>
+
+</head>
+<body>
+<div class="common-wrapper clearfix">
+  <!--Header-part-->
+  <div id="header" class="">
+    <div class="head-msg clearfix flex">
+      <div class="logo">
+        <img class="logo-img" src="./public/img/index-logo.png" alt="">
+        <div class="logo-title">底层硬件检查系统</div>
+      </div>
+    </div>
+  </div>
+
+  <!--top-Header-menu-->
+  <div class="user-box">
+    <span>Admin</span>
+    <a title="退出"><i onclick="Open.url('login.html')" class="fa fa-power-off"></i></a>
+  </div>
+
+  <div class="expand-bar" title="侧边栏伸缩">
+    <i class="fa fa-sliders"></i>
+  </div>
+
+  <!--top-slideBar-->
+  <div id="sidebar" class="clearfix"><a href="#" class="visible-phone"><i class="fa fa-home"></i> 控制台</a>
+    <div class="common--position-title proList-nav-title hidden-phone" style="font-size: 14px;"><span>导航</span></div>
+    <ul class="clearfix">
+      <li class="slideBar-border slideBar-ulWrap-liFirst" onclick="Open.url('./index.html')"><a class="active-lv2"><i class="fa fa-home" style="opacity: 1;"></i> <span>首页</span></a> </li>
+      <li class="submenu"> <a class="hardwareOne"><i class="fa fa-desktop"></i> <span>固件</span> </a>
+        <i class="fa fa-caret-left expand hardwareTwo"></i>
+        <ul class="" style="">
+          <li class="submenuTwo">
+            <i class="fa fa-caret-left expand hardwareTwo slideBar-projectManage"></i>
+            <a class="hardwareTwo project-manage-left"><span>项目管理</span> </a>
+            <ul class="submenuTwo-ul" style="">
+              <li onclick="Open.url('./projectCreate.html')"><a class="hardwareTwo" style=""><i class="fa fa-plus"></i> &nbsp;新建项目</a></li>
+              <li onclick="Open.url('./projectList.html')"><a class="hardwareTwo"><i class="fa fa-list"></i> &nbsp;项目列表</a></li>
+            </ul>
+          </li>
+        </ul>
+        <ul style="">
+          <li class="submenuTwo">
+            <i class="fa fa-caret-left expand hardwareTwo"></i>
+            <a class="hardwareTwo slideBar-systemConfig project-manage-left"><span>系统配置</span> </a>
+              <ul class="submenuTwo-ul">
+                <li onclick="Open.url('./userManage.html')"><a class="hardwareTwo"><i class="fa fa-user"></i> &nbsp;用户管理</a></li>
+                  <li onclick="Open.url('./collectPeopleManage.html')"><a><i class="fa fa-plus"></i> &nbsp;采集人管理</a></li>
+                  <li onclick="Open.url('./analysisPeopleManage.html')"><a><i class="fa fa-list"></i> &nbsp;分析人管理</a></li>
+                  <li onclick="Open.url('./dataReturnedManage.html')"><a><i class="fa fa-list"></i> &nbsp;数据回传设置</a></li>
+              </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <!--main-container-part-->
+  <div id="content" class="clearfix">
+    <div class="content-bg">
+      <div class="index-content-box clearfix">
+        <div class="common--position-title index-nav-title">首页</div>
+        <img class="index-border-topLeft" src="./public/img/index-border-topLeft.png" alt="">
+        <div class="index-pro-detail"></div>
+        <div class="index-pro-center">
+          <!--<div class="bg">-->
+
+          <div class="common-indexPro-position">
+            <div class="index-pro-all">
+              <div class="list">100</div>
+              <div class="list"><i class="fa fa-folder-open">&nbsp;&nbsp;项目</i></div>
+            </div>
+            <div class="index-pro-list">
+              <div class="list-style"><span>项目总数：</span><span style="color: #A5DD60;">100</span></div>
+              <div class="threat list-style"><span>威胁项目数：</span><span style="color: #EC0102;">99</span></div>
+              <img src="./public/img/left-line.png" class="left-line" alt="">
+            </div>
+          </div>
+          <!--</div>-->
+          <div class="common-indexPro-position index-pro-bottomLeft">
+            <div class="index-pro-all">
+              <div class="list">100</div>
+              <div class="list"><i class="fa fa-folder-open">&nbsp;&nbsp;项目二</i></div>
+            </div>
+            <div class="index-pro-list">
+              <div class="list-style"><span>项目二总数：</span><span style="color: #A5DD60;">100</span></div>
+              <div class="threat list-style"><span>威胁项目数：</span><span style="color: #EC0102;">99</span></div>
+              <img src="./public/img/left-line.png" class="left-line" alt="">
+            </div>
+          </div>
+          <div class="common-indexPro-position index-pro-topRight">
+            <div class="index-pro-all">
+              <div class="list">1000</div>
+              <div class="list"><i class="fa fa-folder-open">&nbsp;&nbsp;机器</i></div>
+            </div>
+            <div class="index-pro-list">
+              <div class="list-style"><span>机器总数：</span><span style="color: #A5DD60;">1000</span></div>
+              <div class="threat list-style"><span>威胁机器数：</span><span style="color: #EC0102;">999</span></div>
+              <img src="./public/img/right-line.png" class="left-line" alt="">
+            </div>
+          </div>
+          <div class="common-indexPro-position index-pro-topRight index-pro-bottomRight">
+            <div class="index-pro-all">
+              <div class="list">1000</div>
+              <div class="list"><i class="fa fa-folder-open">&nbsp;&nbsp;机器二</i></div>
+            </div>
+            <div class="index-pro-list">
+              <div class="list-style"><span>机器二总数：</span><span style="color: #A5DD60;">1000</span></div>
+              <div class="threat list-style"><span>威胁机器数：</span><span style="color: #EC0102;">999</span></div>
+              <img src="./public/img/right-line.png" class="left-line" alt="">
+            </div>
+          </div>
+          <img src="./public/img/index-pro-center.png" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Footer-part-->
+  <div class="row-fluid clearfix">
+    <div id="footer" class="span12" style="color: #fff;">
+      中睿天下&nbsp;&nbsp;2018&nbsp;&nbsp;©&nbsp;&nbsp;北京中睿天下信息技术有限公司
+    </div>
+  </div>
+</div>
+
+<script src="./public/js/style.js"></script>
+<script>
+  Init.initSlideButton();
+</script>
+</body>
+</html>
