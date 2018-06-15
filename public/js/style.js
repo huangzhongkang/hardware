@@ -132,6 +132,11 @@ var Init = {
     });
   },
 
+  // 滚动轴插件
+  initScroll: function (){
+    $('.content-bg, .common-table-body').mCustomScrollbar();
+  },
+
   // 导航伸缩按钮
   initSlideButton: function () {
     $('#sidebar').animate({'margin-left': '-250px'},200);
@@ -158,6 +163,8 @@ var Init = {
 };
 
 Init.initLayUi();
+
+Init.initScroll();
 
 Init.init_expandLine();
 
